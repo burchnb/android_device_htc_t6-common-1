@@ -22,6 +22,12 @@
 # CMHW
 /sys/devices/virtual/timed_output/vibrator/voltage_level   u:object_r:vibeamp_sysfs:s0
 
+# Fingerprint
+/system/bin/vcsFPService        u:object_r:vcs_exec:s0
+/data/validity(/.*)?            u:object_r:vcs_data_file:s0
+/dev/validity(/.*)?             u:object_r:vcs_device:s0
+/dev/vfsspi                     u:object_r:vcs_device:s0
+
 # Modem
 /dev/block/mmcblk0p17           u:object_r:modem_efs_partition_device:s0
 /dev/block/mmcblk0p22           u:object_r:modem_efs_partition_device:s0
