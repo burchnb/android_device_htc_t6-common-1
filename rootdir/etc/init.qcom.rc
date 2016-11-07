@@ -147,6 +147,13 @@ on init
     chmod 0660 /sys/camera_htccallback/htccallback
     restorecon /sys/camera_htccallback/htccallback
 
+    # Fingerprint
+    mkdir /dev/validity 0770 system system
+    mkdir /data/validity 0770 system system
+
+    # Fingerprint_sensor
+    chown system radio /sys/class/fingerprint/fingerprint/type_check
+
     # Vibrator
     chown root system /sys/class/timed_output/vibrator/voltage_level
     chmod 0664 /sys/class/timed_output/vibrator/voltage_level
@@ -328,6 +335,11 @@ service cir_fw_update /system/bin/cir_fw_update -u cir.img
     user root
     group root
     oneshot
+
+service fingerprintd /system/bin/fingerprintd
+    class late_start
+    user system
+    group input
 
 service fm_dl /system/bin/setprop hw.fm.init 1
     class late_start
