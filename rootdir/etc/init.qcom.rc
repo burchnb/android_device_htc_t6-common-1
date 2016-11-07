@@ -149,6 +149,13 @@ on init
     chmod 0660 /sys/camera_htccallback/htccallback
     restorecon /sys/camera_htccallback/htccallback
 
+    # Fingerprint
+    mkdir /dev/validity 0770 system system
+    mkdir /data/validity 0770 system system
+
+    # Fingerprint_sensor
+    chown system radio /sys/class/fingerprint/fingerprint/type_check
+
     # Vibrator
     chown root system /sys/class/timed_output/vibrator/voltage_level
     chmod 0664 /sys/class/timed_output/vibrator/voltage_level
